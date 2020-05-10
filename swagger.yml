@@ -10,22 +10,56 @@ produces:
 
 basePath: "/api"
 paths:
-  /countries:
+  /populations:
     get:
       # kertoo mitä tehdään, kun tehdään HTTP-pyyntö päätepisteeseen /api/countries
-      operationId: "countries.read"
+      operationId: populations.read_all
       tags:
-        - "Countries"
-      summary: "The countries data structure supported by the server application"
-      description: "Read the list of countries and their population"
+        - Populations
+      summary: Read the entire set of populations, sorted by country name
+      description: Read the entire set of populations, sorted by country name
       responses:
         200:
-          description: "Successful read countries list operation"
+          description: Successfully read populations list operation
           schema:
-            type: "array"
+            type: array
             items:
               properties:
+                country_id:
+                  type: string
+                  description: Id of the country
                 country_name:
-                  type: "string"
-                2018:
-                  type: "number"
+                  type: string
+                  description: Name of the country
+                year_2018:
+                  type: integer
+                  description: Population of the country in the year 2018
+
+  /populations/{country_id}:
+    get:
+      operationId: populations.read_one
+      tags:
+        - Populations
+      summary: Read populations of one country from the list
+      description: Read populations of one country from the list
+      parameters:
+        - name: country_id
+          in: path
+          description: Id of the country whose population to get
+          type: string
+          required: True
+      responses:
+        200:
+          description: Succesfully read population of the country from populations list operation
+          schema:
+            properties:
+              country_id:
+                type: string
+                description: Id of the country
+              country_name:
+                type: string
+                description: Name of the country
+              year_2018:
+                type: integer
+                description: Population of the country in the year 2018
+
