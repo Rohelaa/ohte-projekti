@@ -5,7 +5,7 @@ from itertools import islice
 import csv
 
 # valtioiden väkiluvut sisältävä csv-tiedosto
-with open('C:/Users/bujak/Desktop/API_SP.POP.TOTL_DS2_en_csv_v2_988606.csv') as csvfile:
+with open('./API_SP.POP.TOTL_DS2_en_csv_v2_988606.csv') as csvfile:
     # luodaan lista, johon talletetaan oliota
     population_data = []
     # DictReaderilla muunnetaan csv-tiedoston rivit dict-muotoon
